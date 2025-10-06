@@ -15,6 +15,17 @@ const propertySchema = new mongoose.Schema({
   yearBuilt: { type: Number, required: true } // Year the property was constructed
 }, { timestamps: true });
 
+propertySchema.set('toJSON', {
+  virtuals: true,
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  }
+});
+
+
 const Property = mongoose.model('Property', propertySchema);
 
 module.exports = Property;
