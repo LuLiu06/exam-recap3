@@ -1,18 +1,27 @@
 const express = require("express");
 const {
-  getAllJobs,
-  getJobById,
-  createJob,
-  updateJob,
-  deleteJob,
-} = require("../controllers/jobControllers");
+  getAllProperties,
+  getPropertyById,
+  createProperty,
+  updateProperty,
+  deleteProperty,
+} = require("../controllers/propertyController");
 
 const router = express.Router();
 
-router.get("/", getAllJobs);
-router.post("/", createJob);
-router.get("/:jobId", getJobById);
-router.put("/:jobId", updateJob);
-router.delete("/:jobId", deleteJob);
+// GET /properties
+router.get("/", getAllProperties);
+
+// POST /properties
+router.post("/", createProperty);
+
+// GET /properties/:propertyId
+router.get("/:propertyId", getPropertyById);
+
+// PUT /properties/:propertyId
+router.put("/:propertyId", updateProperty);
+
+// DELETE /properties/:propertyId
+router.delete("/:propertyId", deleteProperty);
 
 module.exports = router;
